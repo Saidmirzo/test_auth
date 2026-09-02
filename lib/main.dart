@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_auth/bloc/auth/auth_cubit.dart';
 import 'package:test_auth/firebase_options.dart';
 import 'package:test_auth/splash_screen.dart';
 
@@ -12,13 +14,15 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter AUth Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const SplashScreen(),
+      home: BlocProvider(
+        create: (context) => AuthBloc(),
+        child: SplashScreen(),
+      ),
     );
   }
 }
