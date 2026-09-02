@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "223943653055",
+    "project_id": "bus-control-1609",
+    "storage_bucket": "bus-control-1609.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223943653055:android:03ed36dfedc13e7c73f80a",
+        "android_client_info": {
+          "package_name": "com.example.test_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223943653055-4a1cdet49pq03r0vc8d7f483j88cl8c3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdJh-_rAaPkoalZ7n5uer7jGE6PgFGLZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223943653055-4a1cdet49pq03r0vc8d7f483j88cl8c3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "223943653055-rpbldjcast3cb9bshpjhn6g0mof3hn3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.simpl.buscontrol"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223943653055:android:444c9f140c2486ab73f80a",
+        "android_client_info": {
+          "package_name": "com.simpl.buscontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223943653055-b2v26phmsc0hj0abole1khftg7n07rim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simpl.buscontrol",
+            "certificate_hash": "3683069be26010696edef723bbb8ecd157c13d58"
+          }
+        },
+        {
+          "client_id": "223943653055-4a1cdet49pq03r0vc8d7f483j88cl8c3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdJh-_rAaPkoalZ7n5uer7jGE6PgFGLZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223943653055-4a1cdet49pq03r0vc8d7f483j88cl8c3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "223943653055-rpbldjcast3cb9bshpjhn6g0mof3hn3d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.simpl.buscontrol"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
