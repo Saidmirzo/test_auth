@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_auth/bloc/auth/auth_cubit.dart';
 import 'package:test_auth/firebase_options.dart';
-import 'package:test_auth/splash_screen.dart';
+import 'package:test_auth/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

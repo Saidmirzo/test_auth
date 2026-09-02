@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_auth/bloc/auth/auth_cubit.dart';
 import 'package:test_auth/bloc/auth/auth_state.dart';
+import 'package:test_auth/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,7 +24,17 @@ class _SplashScreenState extends State<SplashScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         bloc: context.read<AuthBloc>(),
         listener: (context, state) {
-          
+          if (!state.isLoading && state.user == null) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
+            );
+          } else if (!state.isLoading && state.user != null) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
+            );
+          }
         },
         builder: (context, state) {
           return Center(

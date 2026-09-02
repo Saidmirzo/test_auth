@@ -27,20 +27,20 @@ class AuthBloc extends Cubit<AuthState> {
 
   Future<void> signInWithGoogle(UserModel user) async {
     emit(state.copyWith(isLoading: true));
-    await _authService.signInWithGoogle(user);
-    emit(state.copyWith(isLoading: false, user: user));
+   final result= await _authService.signInWithGoogle(user);
+    emit(state.copyWith(isLoading: false, user: user, error: result));
   }
 
   Future<void> signInWithFacebook(UserModel user) async {
     emit(state.copyWith(isLoading: true));
-    await _authService.signInWithFacebook(user);
-    emit(state.copyWith(isLoading: false, user: user));
+     final result= await _authService.signInWithFacebook(user);
+    emit(state.copyWith(isLoading: false, user: user, error: result));
   }
 
   Future<void> signInWithPhoneNumber(UserModel user) async {
     emit(state.copyWith(isLoading: true));
-    await _authService.signInWithPhoneNumber(user);
-    emit(state.copyWith(isLoading: false, user: user));
+    final result = await _authService.signInWithPhoneNumber(user);
+    emit(state.copyWith(isLoading: false, user: user, error: result));
   }
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {

@@ -6,9 +6,9 @@ import 'package:test_auth/services/locale_service.dart';
 abstract class AuthService {
   Future<UserModel> getCurrentUser();
   Future<void> signOut();
-  Future<void> signInWithGoogle(UserModel user);
-  Future<void> signInWithFacebook(UserModel user);
-  Future<void> signInWithPhoneNumber(UserModel user);
+  Future<String?> signInWithGoogle(UserModel user);
+  Future<String?> signInWithFacebook(UserModel user);
+  Future<String?> signInWithPhoneNumber(UserModel user);
   Future<String?> signInWithEmailAndPassword(String email, String password);
   Future<String?> signUpWithEmailAndPassword(String email, String password);
 }
@@ -53,13 +53,13 @@ class AuthServiceImpl implements AuthService {
   }
 
   @override
-  Future<void> signInWithFacebook(UserModel user) {
+  Future<String?> signInWithFacebook(UserModel user) {
     // TODO: implement signInWithFacebook
     throw UnimplementedError();
   }
 
   @override
-  Future<void> signInWithGoogle(UserModel user) async {
+  Future<String?> signInWithGoogle(UserModel user) async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn.instance
         .authenticate();
 
@@ -76,10 +76,11 @@ class AuthServiceImpl implements AuthService {
         email: googleUser?.email,
       ),
     );
+    return null;
   }
 
   @override
-  Future<void> signInWithPhoneNumber(UserModel user) {
+  Future<String?> signInWithPhoneNumber(UserModel user) {
     // TODO: implement signInWithPhoneNumber
     throw UnimplementedError();
   }
