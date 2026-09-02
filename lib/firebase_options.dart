@@ -62,7 +62,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '223943653055',
     projectId: 'bus-control-1609',
     storageBucket: 'bus-control-1609.firebasestorage.app',
-    androidClientId: '223943653055-b2v26phmsc0hj0abole1khftg7n07rim.apps.googleusercontent.com',
+    androidClientId: '223943653055-546urm38lb52do5kumv01v1h4n64pntr.apps.googleusercontent.com',
     iosClientId: '223943653055-3lddvp09rhs7ck1sq3f77tu2kq8n9njd.apps.googleusercontent.com',
     iosBundleId: 'com.example.testAuth',
   );

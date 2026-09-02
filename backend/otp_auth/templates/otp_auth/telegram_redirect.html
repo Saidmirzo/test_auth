@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get your OTP from Telegram</title>
+    {% if telegram_url and not expired and not missing %}
+    <meta http-equiv="refresh" content="0; url={{ telegram_url }}" />
+    {% endif %}
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        background: #0b1020;
+        color: #f4f7ff;
+      }
+      .card {
+        width: min(420px, calc(100% - 32px));
+        background: #151c2e;
+        border: 1px solid #2c3a5a;
+        border-radius: 20px;
+        padding: 28px;
+      }
+      h1 { margin: 0 0 10px; font-size: 24px; }
+      p { color: #9aa8c7; line-height: 1.5; }
+      a.button, .code {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      a.button { background: #229ed9; color: white; }
+      .code { background: #1d2740; letter-spacing: 0.3em; font-size: 22px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      {% if missing %}
+        <h1>Session not found</h1>
+        <p>Request a new code from the app.</p>
+      {% elif expired %}
+        <h1>Code expired</h1>
+        <p>Go back to the app and request a new Telegram code.</p>
+      {% else %}
+        <h1>Continue in Telegram</h1>
+        <p>
+          Open the bot to receive the 6-digit code for
+          <strong>{{ phone }}</strong>, then return to the app.
+        </p>
+        {% if telegram_url %}
+          <a class="button" href="{{ telegram_url }}">Open Telegram bot</a>
+        {% else %}
+          <p>Telegram bot username is not configured yet.</p>
+        {% endif %}
+        {% if code %}
+          <p>Debug mode (bot token missing):</p>
+          <div class="code">{{ code }}</div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </body>
+</html>

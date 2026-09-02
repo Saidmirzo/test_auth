@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_auth/bloc/auth/auth_cubit.dart';
 import 'package:test_auth/firebase_options.dart';
 import 'package:test_auth/screens/splash_screen.dart';
+import 'package:test_auth/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,12 +17,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter AUth Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: BlocProvider(
-        create: (context) => AuthBloc(),
-        child: SplashScreen(),
+    return BlocProvider(
+      create: (context) => AuthBloc(),
+      child: MaterialApp(
+        title: 'Flutter Auth Demo',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.dark(),
+        home: const SplashScreen(),
       ),
     );
   }
