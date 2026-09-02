@@ -12,6 +12,7 @@ class AuthState {
   final String? redirectUrl;
   final String? telegramUrl;
   final String? debugOtpCode;
+  final List<AuthSessionModel> sessions;
 
   const AuthState({
     this.isLoading = false,
@@ -23,6 +24,7 @@ class AuthState {
     this.redirectUrl,
     this.telegramUrl,
     this.debugOtpCode,
+    this.sessions = const [],
   });
 
   bool get isAuthenticated => user != null;
@@ -40,6 +42,7 @@ class AuthState {
     String? telegramUrl,
     String? debugOtpCode,
     bool clearOtp = false,
+    List<AuthSessionModel>? sessions,
   }) {
     return AuthState(
       isLoading: isLoading ?? this.isLoading,
@@ -51,6 +54,7 @@ class AuthState {
       redirectUrl: clearOtp ? null : (redirectUrl ?? this.redirectUrl),
       telegramUrl: clearOtp ? null : (telegramUrl ?? this.telegramUrl),
       debugOtpCode: clearOtp ? null : (debugOtpCode ?? this.debugOtpCode),
+      sessions: clearUser ? const [] : (sessions ?? this.sessions),
     );
   }
 }

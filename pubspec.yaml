@@ -25,6 +25,15 @@ dependencies:
   http: ^1.6.0
   url_launcher: ^6.3.2
   flutter_facebook_auth: ^7.2.0
+  dio: ^5.11.0
+  flutter_secure_storage: ^10.3.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  device_info_plus: ^13.2.0
+  package_info_plus: ^10.2.1
+  uuid: ^4.6.0
+  flutter_alice: ^2.0.1
+  overlay_support: ^2.1.0
 
 
 dev_dependencies:

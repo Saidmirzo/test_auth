@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     "otp_auth",
 ]
 
@@ -93,3 +95,54 @@ TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_BOT_USERNAME = os.environ.get("TELEGRAM_BOT_USERNAME", "YourAuthBot")
 TELEGRAM_SSL_VERIFY = os.environ.get("TELEGRAM_SSL_VERIFY", "1") == "1"
 OTP_TTL_MINUTES = int(os.environ.get("OTP_TTL_MINUTES", "5"))
+
+# Token lifetimes: change ACCESS_TOKEN_LIFETIME_MINUTES / REFRESH_TOKEN_LIFETIME_DAYS
+# in backend/.env, or the timedelta values in SIMPLE_JWT below.
+ACCESS_TOKEN_LIFETIME_MINUTES = int(os.environ.get("ACCESS_TOKEN_LIFETIME_MINUTES", "15"))
+REFRESH_TOKEN_LIFETIME_DAYS = int(os.environ.get("REFRESH_TOKEN_LIFETIME_DAYS", "7"))
+
+GOOGLE_WEB_CLIENT_ID = os.environ.get(
+    "GOOGLE_WEB_CLIENT_ID",
+    os.environ.get(
+        "GOOGLE_CLIENT_ID",
+        "223943653055-4a1cdet49pq03r0vc8d7f483j88cl8c3.apps.googleusercontent.com",
+    ),
+)
+GOOGLE_ANDROID_CLIENT_ID = os.environ.get(
+    "GOOGLE_ANDROID_CLIENT_ID",
+    "223943653055-546urm38lb52do5kumv01v1h4n64pntr.apps.googleusercontent.com",
+)
+GOOGLE_IOS_CLIENT_ID = os.environ.get(
+    "GOOGLE_IOS_CLIENT_ID",
+    "223943653055-3lddvp09rhs7ck1sq3f77tu2kq8n9njd.apps.googleusercontent.com",
+)
+GOOGLE_CLIENT_IDS = [
+    item.strip()
+    for item in (
+        os.environ.get("GOOGLE_CLIENT_IDS")
+        or ",".join(
+            [
+                GOOGLE_WEB_CLIENT_ID,
+                GOOGLE_ANDROID_CLIENT_ID,
+                GOOGLE_IOS_CLIENT_ID,
+            ]
+        )
+    ).split(",")
+    if item.strip()
+]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "otp_auth.authentication.SessionJWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=ACCESS_TOKEN_LIFETIME_MINUTES),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=REFRESH_TOKEN_LIFETIME_DAYS),
+    "ROTATE_REFRESH_TOKENS": True,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+}

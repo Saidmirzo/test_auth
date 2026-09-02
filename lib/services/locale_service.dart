@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:test_auth/models/user_model.dart';
 
 abstract class LocaleService {
@@ -10,25 +8,27 @@ abstract class LocaleService {
 }
 
 class LocaleServiceImpl implements LocaleService {
+  static const boxName = 'app_data';
   static const _userKey = 'current_user';
+
+  Box get _box => Hive.box(boxName);
 
   @override
   Future<void> saveUserData({required UserModel user}) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_userKey, jsonEncode(user.toJson()));
+    await _box.put(_userKey, user.toJson());
   }
 
   @override
   Future<void> signOut() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_userKey);
+    await _box.delete(_userKey);
   }
 
   @override
   Future<UserModel?> getCurrentUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getString(_userKey);
-    if (raw == null || raw.isEmpty) return null;
-    return UserModel.fromJson(jsonDecode(raw) as Map<String, dynamic>);
+    final raw = _box.get(_userKey);
+    if (raw is Map) {
+      return UserModel.fromJson(Map<String, dynamic>.from(raw));
+    }
+    return null;
   }
 }

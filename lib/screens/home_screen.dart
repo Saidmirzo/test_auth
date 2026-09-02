@@ -5,8 +5,19 @@ import 'package:test_auth/bloc/auth/auth_state.dart';
 import 'package:test_auth/screens/login_screen.dart';
 import 'package:test_auth/theme/app_theme.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AuthBloc>().loadSessions();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +52,52 @@ class HomeScreen extends StatelessWidget {
                 _InfoRow(label: 'Email', value: user?.email ?? '—'),
                 _InfoRow(label: 'Phone', value: user?.phone ?? '—'),
                 _InfoRow(label: 'Provider', value: user?.provider ?? '—'),
-                const Spacer(),
+                const SizedBox(height: 24),
+                const Text(
+                  'Active sessions',
+                  style: TextStyle(
+                    color: AppColors.text,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: state.sessions.isEmpty
+                      ? const Text(
+                          'No active sessions.',
+                          style: TextStyle(color: AppColors.muted),
+                        )
+                      : ListView.builder(
+                          itemCount: state.sessions.length,
+                          itemBuilder: (context, index) {
+                            final session = state.sessions[index];
+                            return ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: Text(
+                                session.deviceName?.isNotEmpty == true
+                                    ? session.deviceName!
+                                    : 'Device ${session.deviceId ?? session.id}',
+                                style: const TextStyle(color: AppColors.text),
+                              ),
+                              subtitle: Text(
+                                [
+                                  session.platform,
+                                  session.ipAddress,
+                                  session.lastSeenAt,
+                                ].where((item) => item != null && item.isNotEmpty).join(' · '),
+                                style: const TextStyle(color: AppColors.muted),
+                              ),
+                              trailing: IconButton(
+                                icon: const Icon(Icons.logout_rounded),
+                                onPressed: () => context
+                                    .read<AuthBloc>()
+                                    .revokeSession(session.id),
+                              ),
+                            );
+                          },
+                        ),
+                ),
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
