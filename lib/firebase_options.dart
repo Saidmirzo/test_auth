@@ -56,7 +56,6 @@ class DefaultFirebaseOptions {
     projectId: 'bus-control-1609',
     storageBucket: 'bus-control-1609.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyChwhxsFuLkQdnaC3RETJiLFwXj-iKgXGs',
     appId: '1:223943653055:ios:998a8d759e3559d073f80a',

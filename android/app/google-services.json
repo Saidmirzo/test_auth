@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "223943653055-rpbldjcast3cb9bshpjhn6g0mof3hn3d.apps.googleusercontent.com",
+              "client_id": "223943653055-3lddvp09rhs7ck1sq3f77tu2kq8n9njd.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.simpl.buscontrol"
+                "bundle_id": "com.example.testAuth"
               }
             }
           ]
@@ -75,10 +75,10 @@
               "client_type": 3
             },
             {
-              "client_id": "223943653055-rpbldjcast3cb9bshpjhn6g0mof3hn3d.apps.googleusercontent.com",
+              "client_id": "223943653055-3lddvp09rhs7ck1sq3f77tu2kq8n9njd.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.simpl.buscontrol"
+                "bundle_id": "com.example.testAuth"
               }
             }
           ]
