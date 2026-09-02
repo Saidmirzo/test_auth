@@ -18,6 +18,7 @@ class OtpChallenge(models.Model):
     code = models.CharField(max_length=6)
     session_id = models.CharField(max_length=64, unique=True)
     telegram_chat_id = models.CharField(max_length=64, blank=True)
+    contact_verified = models.BooleanField(default=False)
     is_used = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

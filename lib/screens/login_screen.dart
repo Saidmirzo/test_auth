@@ -173,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       _channel == OtpChannel.email
                           ? 'We will send a 6-digit code to your email.'
-                          : 'You will be redirected to Telegram to receive the OTP.',
+                          : 'You will open Telegram, share the contact for this number, then receive the OTP.',
                       style: const TextStyle(
                         color: AppColors.muted,
                         fontSize: 13,

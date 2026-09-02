@@ -98,6 +98,8 @@ def request_phone_otp(request):
         "telegram_url": telegram_url,
     }
     if settings.DEBUG and not settings.TELEGRAM_BOT_TOKEN:
+        challenge.contact_verified = True
+        challenge.save(update_fields=["contact_verified"])
         body["debug_code"] = challenge.code
     return JsonResponse(body)
 
@@ -127,6 +129,12 @@ def _verify(channel, destination, code):
         return _error("Invalid or already used code.", status=401)
     if challenge.is_expired():
         return _error("This code has expired. Request a new one.", status=401)
+    if channel == OtpChallenge.CHANNEL_PHONE and not challenge.contact_verified:
+        return _error(
+            "Share your Telegram contact from the same number first. "
+            "Codes are only sent after that.",
+            status=401,
+        )
     challenge.is_used = True
     challenge.save(update_fields=["is_used"])
     if channel == OtpChallenge.CHANNEL_EMAIL:

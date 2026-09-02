@@ -109,9 +109,10 @@ class AuthServiceImpl implements AuthService {
   @override
   Future<String?> signInWithFacebook() async {
     try {
-      final login = await FacebookAuth.instance.login(
-        permissions: const ['email', 'public_profile'],
-      );
+      final faceBook = FacebookAuth.instance;
+      await faceBook.logOut();
+      final login = await faceBook.login();
+
       if (login.status == LoginStatus.cancelled) {
         return 'Facebook sign-in was cancelled.';
       }

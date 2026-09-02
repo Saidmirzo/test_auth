@@ -50,8 +50,9 @@
       {% else %}
         <h1>Continue in Telegram</h1>
         <p>
-          Open the bot to receive the 6-digit code for
-          <strong>{{ phone }}</strong>, then return to the app.
+          Open the bot from the Telegram account for
+          <strong>{{ phone }}</strong>, tap Start, then share that contact.
+          A code is sent only after the shared number matches.
         </p>
         {% if telegram_url %}
           <a class="button" href="{{ telegram_url }}">Open Telegram bot</a>

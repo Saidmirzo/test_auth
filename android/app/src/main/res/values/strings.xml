@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Replace these with your Facebook app credentials. -->
-    <string name="facebook_app_id">1234567890</string>
-    <string name="facebook_client_token">FACEBOOK_CLIENT_TOKEN</string>
-    <string name="fb_login_protocol_scheme">fb1234567890</string>
+    <string name="facebook_app_id">1425715246087164</string>
+    <string name="facebook_client_token">7f7b1c186d893b6419ad89a441abd638</string>
+    <string name="fb_login_protocol_scheme">fb1425715246087164</string>
 </resources>

@@ -5,6 +5,13 @@ from .models import OtpChallenge
 
 @admin.register(OtpChallenge)
 class OtpChallengeAdmin(admin.ModelAdmin):
-    list_display = ("channel", "destination", "code", "is_used", "created_at")
-    list_filter = ("channel", "is_used")
+    list_display = (
+        "channel",
+        "destination",
+        "code",
+        "contact_verified",
+        "is_used",
+        "created_at",
+    )
+    list_filter = ("channel", "is_used", "contact_verified")
     search_fields = ("destination", "session_id")

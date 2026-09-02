@@ -42,9 +42,9 @@
 		<string>fbshareextension</string>
 	</array>
 	<key>FacebookAppID</key>
-	<string>1234567890</string>
+	<string>1425715246087164</string>
 	<key>FacebookClientToken</key>
-	<string>FACEBOOK_CLIENT_TOKEN</string>
+	<string>a31f1b224b20dd02434d66f7a584ae30</string>
 	<key>FacebookDisplayName</key>
 	<string>Test Auth</string>
 	<key>CFBundleURLTypes</key>
@@ -52,7 +52,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1234567890</string>
+				<string>fb1425715246087164</string>
 			</array>
 		</dict>
 	</array>

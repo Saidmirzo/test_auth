@@ -78,7 +78,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     const SizedBox(height: 8),
                     Text(
                       isPhone
-                          ? 'Open Telegram, copy the 6-digit code, then paste it here.'
+                          ? 'Open Telegram from the same number, tap Start, share that contact, then paste the 6-digit code here.'
                           : 'Enter the 6-digit code sent to ${state.otpDestination ?? 'your email'}.',
                       style: const TextStyle(
                         color: AppColors.muted,
